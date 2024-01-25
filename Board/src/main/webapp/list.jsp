@@ -6,6 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    list 리스트입니다.. 
+    list 리스트입니다..
+    <input type="text" value="리스트" readonly> 
 </body>
 </html>
