@@ -6,6 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    delete.jsp
+    delete.jsp 수정했습니다.
 </body>
 </html>
