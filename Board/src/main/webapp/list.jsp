@@ -6,6 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    list ㅋㅋㅋㅋㅋㅋㅋㅋㅋ
+    list 리스트입니다 
 </body>
 </html>
