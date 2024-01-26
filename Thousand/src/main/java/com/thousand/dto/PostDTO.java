@@ -1,18 +1,18 @@
-package com.dto;
+package com.thousand.dto;
 
 import java.sql.Timestamp;
 
 public class PostDTO {
-	private int no;
-	private String id;
-	private String title;
-	private String summary;
-	private String categorycode;
-	private String mainimg;
-	private int readcount;
-	private String content1;
-	private String content2;
-	private String content3;
+	private int pno;				//게시글 번호
+	private String id;				//회원 아이디(작성자용)
+	private String title;			//게시글 제목
+	private String summary;			//게시글 요약
+	private String categorycode;	//카테고리 번호 -> 카테고리 불러오기
+	private String mainimg;			//메인사진
+	private int readcount;			//게시글 전체 조회수
+	private String content1;		//본문내용1 -> 재료
+	private String content2;		//본문내용2~11 -> 세부내용
+	private String content3;	
 	private String content4;
 	private String content5;
 	private String content6;
@@ -20,8 +20,8 @@ public class PostDTO {
 	private String content8;
 	private String content9;
 	private String content10;
-	private String produceImg1;
-	private String produceImg2;
+	private String content11;
+	private String produceImg2;		//본문내용 2~11까지의 사진
 	private String produceImg3;
 	private String produceImg4;
 	private String produceImg5;
@@ -30,12 +30,15 @@ public class PostDTO {
 	private String produceImg8;
 	private String produceImg9;
 	private String produceImg10;
-	private Timestamp postdate;
+	private String produceImg11;
+	private Timestamp postdate;		//게시글 작성 날짜
+	
+	
 	public int getNo() {
-		return no;
+		return pno;
 	}
-	public void setNo(int no) {
-		this.no = no;
+	public void setNo(int pno) {
+		this.pno = pno;
 	}
 	public String getId() {
 		return id;
@@ -133,11 +136,11 @@ public class PostDTO {
 	public void setContent10(String content10) {
 		this.content10 = content10;
 	}
-	public String getProduceImg1() {
-		return produceImg1;
+	public String getContent11() {
+		return content11;
 	}
-	public void setProduceImg1(String produceImg1) {
-		this.produceImg1 = produceImg1;
+	public void setContent11(String content11) {
+		this.content11 = content11;
 	}
 	public String getProduceImg2() {
 		return produceImg2;
@@ -192,6 +195,12 @@ public class PostDTO {
 	}
 	public void setProduceImg10(String produceImg10) {
 		this.produceImg10 = produceImg10;
+	}
+	public String getProduceImg11() {
+		return produceImg11;
+	}
+	public void setProduceImg11(String produceImg11) {
+		this.produceImg11 = produceImg11;
 	}
 	public Timestamp getPostdate() {
 		return postdate;

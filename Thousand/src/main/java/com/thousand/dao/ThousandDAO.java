@@ -1,17 +1,19 @@
-package com.dao;
+package com.thousand.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import com.dto.CategoryDTO;
-import com.dto.LikepostDTO;
-import com.dto.MemberDTO;
-import com.dto.PostDTO;
+import com.thousand.dto.CategoryDTO;
+import com.thousand.dto.LikepostDTO;
+import com.thousand.dto.MemberDTO;
+import com.thousand.dto.PostDTO;
 
 public class ThousandDAO {
 	
@@ -24,19 +26,16 @@ public class ThousandDAO {
 		return instance;
 	}
 	
-	// DBCP 커넥션
-	public Connection getConnection() throws Exception{
-		Connection conn=null;
-		Context initContext=new InitialContext();
-		Context envContext=(Context)initContext.lookup("java:/comp/env");
-		DataSource ds=(DataSource)envContext.lookup("jdbc/myoracle");
-		conn=ds.getConnection();
-		return conn;
-	}
 	
 /* 포스팅 ***********************************************/
 	//전체글 수 조회
 	public void selectCount() {
+	}
+	
+	//전체글 불러오기 
+	public List<PostDTO> selectPostsAll(){
+		List<PostDTO> list = new ArrayList<PostDTO>();
+		return list;
 	}
 	
 	//글 작성
@@ -79,37 +78,6 @@ public class ThousandDAO {
 	//id 중복 체크
 	public int confirmId(String id) {
 		int result=-1;
-		String sql="select userid from member where id=?";
-		Connection conn=null;
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		try {
-			conn=getConnection();
-			pstmt=conn.prepareStatement(sql);
-			pstmt.setString(1, id);
-			rs=pstmt.executeQuery();
-			if(rs.next()) { // userid가 있는 경우
-				result=1;
-			}else { // userid가 없는 경우
-				result=-1;
-			}
-		}catch(Exception e) {
-			e.printStackTrace();
-		}finally {
-			try {
-				if(rs!=null) {
-					rs.close();
-				}
-				if(pstmt!=null) {
-					pstmt.close();
-				}
-				if(conn!=null) {
-					conn.close();
-				}
-			}catch(Exception e) {
-				e.printStackTrace();
-			}
-		}
 		return result;
 	}
 	
@@ -132,6 +100,10 @@ public class ThousandDAO {
 	
 
 /* 카테고리 ***********************************************/
+	// 카테고리 입력
+	public void insertCategory() {
+	}
+	
 	// 카테고리 조회
 	public void selectCategory(CategoryDTO cDTO) {
 	}
@@ -144,8 +116,19 @@ public class ThousandDAO {
 	
 	
 /* 좋아요 ***********************************************/
-	// 좋아요 조회
+	//좋아요 눌렀는지 체크 함수
+	public int checkLike() {
+		int check = 0;
+		return 0;
+	}
+	
+	// 좋아요 조회 -> counting 하기
 	public void selectLike(LikepostDTO lpDTO) {
+	}
+	
+	// 좋아요 정보 넣기
+	public void insertLike() {
+		
 	}
 	
 	// 좋아요 수정
@@ -153,6 +136,15 @@ public class ThousandDAO {
 	}
 /* 좋아요.end ***********************************************/
 	
+	/* 당일 조회수  ***********************************************/
+	// 당일 조회수 기록하기 
+	public void insertTodayReadcount() {
+	}
+	
+	// 당일 조회수 불러오기
+	public void selectTodayReadcount() {
+	}
+	/* 당일 조회수.end ***********************************************/
 	
 }
 

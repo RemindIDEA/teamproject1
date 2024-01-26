@@ -1,13 +1,14 @@
-package com.dto;
+package com.thousand.dto;
 
 import java.sql.Timestamp;
 
 public class MemberDTO {
-	private String id;
-	private String pw;
-	private String email;
-	private String nickname;
-	private Timestamp joindate;
+	private String id;				//회원 아이디
+	private String pw;				//회원 비밀번호
+	private String email;			//회원 이메일
+	private String nickname;		//회원 닉네임
+	private Timestamp joindate;		//회원 가입날짜
+	
 	public String getId() {
 		return id;
 	}

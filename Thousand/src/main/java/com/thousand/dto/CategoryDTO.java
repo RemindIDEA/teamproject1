@@ -1,11 +1,19 @@
-package com.dto;
+package com.thousand.dto;
 
 public class CategoryDTO {
-	private String categorycode;
-	private String recipe;
-	private String local;
-	private String item;
+	private String categorycode;		//카테고리 번호 pk
+	private int pno;					//참조키 게시글 번호 rk
+	private String recipe;				//카테고리 분류 - 레시피별
+	private String local;				//카테고리 분류 - 지역별
+	private String item;				//카테고리 분류 - 재료별
 	
+	//getter and setter
+	public int getPno() {
+		return pno;
+	}
+	public void setPno(int pno) {
+		this.pno = pno;
+	}
 	public String getCategorycode() {
 		return categorycode;
 	}
