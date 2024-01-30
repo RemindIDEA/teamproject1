@@ -349,6 +349,7 @@ public class ThousandDAO {
 	// 좋아요 정보 넣기
 	public void insertLike() {
 
+		
 	}
 
 	// 좋아요 수정
