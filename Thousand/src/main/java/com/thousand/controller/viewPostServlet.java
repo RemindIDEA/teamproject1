@@ -27,7 +27,9 @@ public class viewPostServlet extends HttpServlet {
 		if(pno != -1) {	//받아온 글번호가 있을경우
 			ThousandDAO tDao = ThousandDAO.getInstance();		//dao 인스턴스 받아오기
 			PostDTO pDto = new PostDTO();						//글 내용 받아올 객체 생성
+			//pno로 해당 글 받아와서 정보 저장하고 페이지 넘어가기
 			pDto = tDao.selectOnePost(pno);						//글번호로 해당 글 정보 가져오기
+			tDao.plusReadCount(pno);							//글번호로 조회수 올리기
 			request.setAttribute("pDto", pDto);					//받아온 객체 정보 request에 저장
 			RequestDispatcher dispatcher = request.getRequestDispatcher("mainView/viewPost.jsp");		//viewpost로 넘어가기
 			dispatcher.forward(request, response);

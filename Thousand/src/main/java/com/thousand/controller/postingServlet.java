@@ -51,30 +51,16 @@ public class postingServlet extends HttpServlet {
 		String local = multi.getParameter("local");
 		String item = multi.getParameter("item");
 		//요리순서 받아오기
-		String content1 = multi.getParameter("content1");		//재료
-		
-		String content2 = multi.getParameter("content2");		//요리순서 1~10까지
-		String content3 = multi.getParameter("content3");
-		String content4 = multi.getParameter("content4");
-		String content5 = multi.getParameter("content5");
-		String content6 = multi.getParameter("content6");
-		String content7 = multi.getParameter("content7");
-		String content8 = multi.getParameter("content8");
-		String content9 = multi.getParameter("content9");
-		String content10 = multi.getParameter("content10");
-		String content11 = multi.getParameter("content11");
-		
-		String produceImg2 = multi.getFilesystemName("produceImg2");
-		String produceImg3 = multi.getFilesystemName("produceImg3");
-		String produceImg4 = multi.getFilesystemName("produceImg4");
-		String produceImg5 = multi.getFilesystemName("produceImg5");
-		String produceImg6 = multi.getFilesystemName("produceImg6");
-		String produceImg7 = multi.getFilesystemName("produceImg7");
-		String produceImg8 = multi.getFilesystemName("produceImg8");
-		String produceImg9 = multi.getFilesystemName("produceImg9");
-		String produceImg10 = multi.getFilesystemName("produceImg10");
-		String produceImg11 = multi.getFilesystemName("produceImg11");
-		
+		String[] content = new String[11];
+		String[] produceImg = new String[10];
+		for(int i=0; i<11; i++) {
+			//재료 + //요리순서 1~10까지
+			content[i] = multi.getParameter("content"+Integer.toString(i));
+			if(i!= 11) {		//재료 + 순서는 11가지 이지만 사진은 1~10까지 이므로 11번때는 실행되지 않게하기
+				produceImg[i] = multi.getParameter("produceImg"+Integer.toString(i));
+			}
+		}
+	
 		//글 등록 전 카테고리 우선 등록
 		CategoryDTO cDto = new CategoryDTO();
 		cDto.setRecipe(recipe);		//선택한 카테고리 각각 넣어주기
@@ -94,28 +80,9 @@ public class postingServlet extends HttpServlet {
 		pDto.setTitle(title);
 		pDto.setSummary(summary);
 		pDto.setCategorycode(categorycode);		//위에서 받아온 카테고리 코드(가장최신)꺼 등록
-		pDto.setContent1(content1);
-		pDto.setContent2(content2);
-		pDto.setProduceImg2(produceImg2);
-		pDto.setContent3(content3);
-		pDto.setProduceImg3(produceImg3);
-		pDto.setContent4(content4);
-		pDto.setProduceImg4(produceImg4);
-		pDto.setContent5(content5);
-		pDto.setProduceImg5(produceImg5);
-		pDto.setContent6(content6);
-		pDto.setProduceImg6(produceImg6);
-		pDto.setContent7(content7);
-		pDto.setProduceImg7(produceImg7);
-		pDto.setContent8(content8);
-		pDto.setProduceImg8(produceImg8);
-		pDto.setContent9(content9);
-		pDto.setProduceImg9(produceImg9);
-		pDto.setContent10(content10);
-		pDto.setProduceImg10(produceImg10);
-		pDto.setContent11(content11);
-		pDto.setProduceImg11(produceImg11);
-		
+		pDto.setMainimg(mainimg);
+		pDto.setContent(content);
+		pDto.setProduceImg(produceImg);
 		tDao.insertPost(pDto);		//정보가 저장된 객체를 넘겨서 insert해주기
 		
 		//방금 작성한 게시글 번호 받아오기.
