@@ -1,163 +1,46 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-	integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-	crossorigin="anonymous" referrerpolicy="no-referrer" />
-<script
-	src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-<title>login</title>
-<style>
-* {
-	padding: 0;
-	margin: 0;
-	text-decoration: none;
-}
-
-#box {
-	display: block;
-	position: relative;
-	background-color: white;
-	width: 100%;
-	height: 1200px;
-}
-
-#logbox {
-	position: absolute;
-	left: 34%;
-	top: 25%;
-	width: 30%;
-	height: 400px;
-	z-index: 3;
-	border: solid orange 3px;
-}
-
-.logo {
-	position: absolute;
-	left: 36%;
-	top: 10%;
-	width: 25%;
-	height: 100px;
-}
-
-.logo img {
-	position: absolute;
-	top: 15%;
-	width: 100%;
-}
-
-.idbox {
-	position: absolute;
-	left: 25%;
-	top: 18%;
-	width: 50%;
-	height: 40px;
-	border: solid orange 3px;
-}
-
-.pwbox {
-	position: absolute;
-	left: 25%;
-	top: 35%;
-	width: 50%;
-	height: 40px;
-	border: solid orange 3px;
-}
-
-.logintxt {
-	position: absolute;
-	left: 3%;
-	top: 12%;
-}
-
-.login {
-	position: absolute;
-	left: 25%;
-	top: 55%;
-	width: 50%;
-	height: 50px;
-	background-color: orange;
-	border: solid orange 3px;
-	border-radius: 30px 30px 30px 30px;
-}
-
-.logintxt2 {
-	text-align: center;
-	font-size: 24px;
-}
-
-.searchId {
-	position: absolute;
-	left: 20%;
-	top: 78%;
-	color: orange;
-	text-decoration: underline;
-}
-
-.searchPw {
-	position: absolute;
-	left: 41%;
-	top: 78%;
-	color: orange;
-	text-decoration: underline;
-}
-
-.join {
-	position: absolute;
-	left: 67%;
-	top: 78%;
-	color: orange;
-	text-decoration: underline;
-}
-
-#footer {
-	display: block;
-	width: 100%;
-	height: 150px;
-	background-color: pink;
-	position: relative;
-}
-
-@media screen and (max-width:767px) {
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href=" integrity="
+        sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="
+        anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../css/main.css" />
 </head>
 
 <body>
-	<div id="box">
-
-		<div id="logbox">
-			<div class="idbox">
-				<p class="logintxt">ID</p>
-			</div>
-			<div class="pwbox">
-				<p class="logintxt">PW</p>
-			</div>
-			<div class="login">
-				<p class="logintxt2">LogIn</p>
-			</div>
-
-			<p class="searchId">아이디 찾기</p>
-			<p class="searchPw">비밀번호 찾기</p>
-			<p class="join">회원가입</p>
-		</div>
-
-		<div class="logo">
-			<img src="/Thousand/src/main/webapp/img/logo.png">
-		</div>
-	</div>
-	<div id="footer"></div>
+    <div class="loginlogo">
+        <img src="../img/logo.png" alt="로고이미지" style="width:350px; height:100px;" />
+    </div>
+    <div class="login border border-warning">
+        <form action="#">
+            <div class="form-group logingroup">
+                <br>
+                <label for="id">
+                    <h3>아 이 디</h3>
+                </label>
+                <input type="text" class="form-control loginform border border-warning" placeholder="아이디를 입력하세요"
+                    id="id">
+            </div>
+            <div class="form-group logingroup">
+                <label for="password">
+                    <h3>비 밀 번 호</h3>
+                </label>
+                <input type="password" class="form-control loginform border border-warning" placeholder="비밀번호를 입력하세요"
+                    id="password">
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary border border-warning  loginbtn">로그인</button>
+            <button type="submit" class="btn joinbtn">회원가입</button>
+            <button type="submit" class="btn findidbtn">아이디찾기</button>
+            <button type="submit" class="btn findpwbtn">비밀번호찾기</button>
+        </form>
+    </div>
 </body>
+
 </html>
