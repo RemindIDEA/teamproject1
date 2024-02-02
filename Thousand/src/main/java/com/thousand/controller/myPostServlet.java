@@ -30,14 +30,7 @@ public class myPostServlet extends HttpServlet {
 		ThousandDAO tDao = ThousandDAO.getInstance();
 		HttpSession session=request.getSession();
 		/********페이징 처리 시작****************************************/
-		Map<String, Object> map = new HashMap<String , Object>();
 		
-		//한페이지에 보여줄 게시물 갯수
-		 int pagePerSize = 6;
-		//페이징 범위 갯수
-		 int blockPage =5;
-		 /*페이징 범위 구하기*/
-		 
 		/***********페이징 처리 끝 ********************************************/
 		//디버깅
 		//String id = "gijung93";
