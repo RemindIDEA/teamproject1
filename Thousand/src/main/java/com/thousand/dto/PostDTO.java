@@ -13,7 +13,14 @@ public class PostDTO {
 	private String[] content;      //본문내용1 -> 재료, 2~11 내용
 	private String[] produceImg;      //본문내용 2~11까지의 사진
 	private Timestamp postdate;      //게시글 작성 날짜
+	private int rnum;
 
+	public int getRnum() {
+		return rnum;
+	}
+	public void setRnum(int rnum) {
+		this.rnum = rnum;
+	}
 	public PostDTO(){
 		content = new String[11];
 		produceImg = new String[10];

@@ -22,8 +22,15 @@ public class loginFormServlet extends HttpServlet {
     }
 
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      RequestDispatcher dispatcher=request.getRequestDispatcher("mypage/loginForm.jsp");
-      dispatcher.forward(request, response);
+	   HttpSession session=request.getSession(); //session
+		if(session.getAttribute("loginUser") !=null) {
+			//로그인 되어 있을 시 메인으로 이동.
+			RequestDispatcher dispatcher=request.getRequestDispatcher("main.do");
+			dispatcher.forward(request, response);
+		}else {
+			RequestDispatcher dispatcher=request.getRequestDispatcher("mypage/loginForm.jsp");
+			dispatcher.forward(request, response);
+		}
    }
 
    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -46,11 +53,8 @@ public class loginFormServlet extends HttpServlet {
       ThousandDAO tDao=ThousandDAO.getInstance();
       int result=tDao.createMember(mDto); // 영향을 받은 행의 수. insert하면 1행이 추가되므로 1리턴
       
-      // session 생성
-      HttpSession session=request.getSession();
       if(result==1) {
-         session.setAttribute("UserId", mDto.getId());
-         request.setAttribute("message", "회원가입이 완료되었습니다.");
+    	  request.setAttribute("message", "회원가입이 완료되었습니다.");
          // 회원가입 성공했을 경우 로그인 페이지로 넘어가기
          RequestDispatcher dispatcher=request.getRequestDispatcher("mypage/login.jsp");
          dispatcher.forward(request, response);

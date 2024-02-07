@@ -22,7 +22,7 @@ public class ThousandPage {
         while (blockCount <= blockPage && pageTemp <= totalPages) {
             if (pageTemp == pageNum) {
                 // 현재 페이지는 링크를 걸지 않음
-                pagingStr += "&nbsp;" + pageTemp + "&nbsp;";
+                pagingStr += "&nbsp;<a href='#'>" + pageTemp + "</a>&nbsp;";
             } else {
                 pagingStr += "&nbsp;<a href='" + reqUrl + "&pageNum=" + pageTemp
                              + "'>" + pageTemp + "</a>&nbsp;";

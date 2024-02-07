@@ -30,28 +30,19 @@ public class findPwServlet extends HttpServlet {
       request.setCharacterEncoding("UTF-8");
       
       String id=request.getParameter("id");
-      String pw=request.getParameter("pw");
-      String email=request.getParameter("email");
+      String nickname=request.getParameter("nickname");
       
       ThousandDAO tDao=ThousandDAO.getInstance();
-      int result=tDao.searchPw(id, pw, email);
-      
-      request.setAttribute("id", id);
-      request.setAttribute("pw", pw);
-      request.setAttribute("email", email);
-      
-      HttpSession session=request.getSession();
-      if(result==1) {
-         session.setAttribute("UserEmail", email);
-         // 비밀번호 표시 때 별로 가려져서 보이게 하고 싶음 // 뭐더라..
-         request.setAttribute("message", "비밀번호는 "+pw+"입니다");
+      String password=tDao.searchPw(id,nickname);
          
+      if(password !=null) {
+         // 비밀번호 표시 때 별로 가려져서 보이게 하고 싶음 // 뭐더라..
+         request.setAttribute("message", "비밀번호는 "+password+"입니다");
          // PW를 찾았을 경우 로그인 페이지로 이동
          RequestDispatcher dispatcher=request.getRequestDispatcher("mypage/login.jsp");
          dispatcher.forward(request, response);
       }else {
-         request.setAttribute("message", "아이디와 이메일을 확인해주세요.");
-         
+         request.setAttribute("message", "아이디와 닉네임을 확인해주세요.");
          // PW를 찾지 못했을 경우 비밀번호찾기 페이지
          RequestDispatcher dispatcher=request.getRequestDispatcher("mypage/findPw.jsp");
          dispatcher.forward(request, response);
