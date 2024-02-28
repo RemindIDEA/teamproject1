@@ -138,14 +138,13 @@
             
             <div class="postmainimg">
                 <div class="upload" style="width: 300px; height: 300px; overflow: hidden;">
-                    <div class="image-preview"><img id="nonmainimg" src="img/${postList.mainimg}" /></div>
+                    <div class="image-preview"><img id="nonmainimg" src="img/${postList.mainimg}"/></div>
                     <input type="hidden" name="nonmainimg" value="${postList.mainimg}"/>
                 </div>
                 <input style="position: absolute; top:-0px;"  type="file" name="mainimg" onchange="setThumbnail(event);" id="mainimg" accept="image/*">
                  <script>
 			      function setThumbnail(event) {
 			        var reader = new FileReader();
-			
 			        reader.onload = function(event) {
 			          const preimg = document.getElementById("nonmainimg");
 			          preimg.remove();
@@ -154,9 +153,7 @@
 			          img.setAttribute("id", "nonmainimg");
 			          document.querySelector(".image-preview").appendChild(img);
 			        };
-			
 			        reader.readAsDataURL(event.target.files[0]);
-			        
 			      }
 			    </script>
             </div>
@@ -189,8 +186,7 @@
 				      }
 				    </script>
                 </div>
-                
-               
+
                 <div class="cookstep2 on">
                     <input class="step" name="content3" type="text" value="${postList.content[2]}">
                     <input class="plusstep2" type="button" value="+">

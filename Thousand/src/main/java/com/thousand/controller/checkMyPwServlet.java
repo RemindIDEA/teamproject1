@@ -11,13 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.thousand.dao.ThousandDAO;
-import com.thousand.dto.MemberDTO;
 
 @WebServlet("/checkMyPw.do")
-public class checkMyPwServlet extends HttpServlet {
+public class CheckMyPwServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public checkMyPwServlet() {
+	public CheckMyPwServlet() {
 		super();
 	}
 
@@ -43,8 +42,9 @@ public class checkMyPwServlet extends HttpServlet {
 		if(result == 1){     // 비밀번호 일치시 mypage/updateinform.jsp페이지로 이동
 			request.setAttribute("id", id);
 			request.setAttribute("pw", pw);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("updateMyInform.do?message=get");
-			dispatcher.forward(request, response);
+			response.sendRedirect("updateMyInform.do");
+//			RequestDispatcher dispatcher = request.getRequestDispatcher("updateMyInform.do");
+//			dispatcher.forward(request, response);
 		} else {               //비밀번호 일치하지 않을 경우. 실패 메시지 출력 하고 다시 mypage/checkMyPw.jsp로 이동
 			request.setAttribute("message", "비밀번호 확인에 실패하셨습니다.");
 			RequestDispatcher dispatcher = request.getRequestDispatcher("mypage/checkMyPw.jsp");

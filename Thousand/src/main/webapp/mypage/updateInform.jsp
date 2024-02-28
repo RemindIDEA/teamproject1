@@ -73,7 +73,7 @@
         <br>
         <h2 style="text-align: center;">내정보 수정</h2>
 
-        <form action="updateMyInform.do" method="get" name="frm">
+        <form action="updateMyInform.do" method="post" name="frm">
             <div class="form-group form-inline updatemyinformngroup">
                 <label style="width:100px;" for="id">아 이 디</label>
                 <input type="text" name="id" style="width:270px;" class="form-control border border-warning"
