@@ -84,12 +84,22 @@ public class PostServiceImpl implements PostService {
 		map.put("pageNum", pageNum);
 		return map;
 	}
-
+	//글 상세보기
 	@Override
 	public PostDTO selectOnePost(int pno) {
-		return null;
+		PostDTO pDto = new PostDTO();
+		//글번호로 해당 글 정보 가져오기
+		pDto = postRepo.selectOnePost(pno);
+		postRepo.plusReadCount(pno);	//조회수 올리기
+		return pDto;
 	}
-
+	//글 작성자와 로그인유저 같은지 체크
+	@Override
+	public boolean checkPnoId(int pno, String id) {
+		boolean result = false;//해당 글 작성자와 아이디 일치에 대한 결과
+		result = postRepo.checkPnoId(pno,id);
+		return result;
+	}
 	@Override
 	public int selectCount() {
 		return 0;
@@ -112,5 +122,6 @@ public class PostServiceImpl implements PostService {
 	public void deletePost(PostDTO pDTO) {
 
 	}
+	
 
 }
