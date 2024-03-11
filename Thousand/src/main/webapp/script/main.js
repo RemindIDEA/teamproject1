@@ -29,7 +29,7 @@ function nicknameCheck(){
       document.form.nickname.focus();
       return;
    }
-   var url="checkNickname.do?nickname="+document.frm.nickname.value;
+   var url="nicknameCheck.do?nickname="+document.frm.nickname.value;
    window.open(url,"blank1","resizable=no,width=450,height=200");
 }
 

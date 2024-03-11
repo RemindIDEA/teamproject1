@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import com.thousand.consts.QueryCollect;
 import com.thousand.dto.CategoryDTO;
 import com.thousand.dto.LikepostDTO;
 import com.thousand.dto.MemberDTO;
@@ -556,14 +557,13 @@ public class ThousandDAO {
 
 	// id 중복 체크
 	public int confirmId(String id) {
-		int result = -1;
-		String sql = "select id from member where id=?";
+		Integer result = null;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
 			conn = DBManager.getConnection();
-			pstmt = conn.prepareStatement(sql);
+			pstmt = conn.prepareStatement(QueryCollect.CONFIRM_ID);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 			if (rs.next()) { // id가 있는 경우
@@ -574,19 +574,7 @@ public class ThousandDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			try {
-				if (rs != null) {
-					rs.close();
-				}
-				if (pstmt != null) {
-					pstmt.close();
-				}
-				if (conn != null) {
-					conn.close();
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			DBManager.close(conn, pstmt, rs);
 		}
 		return result;
 	}
