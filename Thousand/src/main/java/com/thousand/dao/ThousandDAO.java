@@ -537,23 +537,6 @@ public class ThousandDAO {
 			DBManager.close(conn, pstmt);
 		}
 	}
-	// 회원 탈퇴
-	public void deleteMember(String id) {
-		String sql = "delete from member where id = ?";      //db에서 id를 기준으로 삭제 할 member테이블 데이터 찾기
-		//이것만 지우고 나머지 likepost, post 테이블의 데이터는 해당 db에 테이블 - 제약조건 - 삭제시 종속삭제 설정하면 삭제 됨
-		Connection conn=null;
-		PreparedStatement pstmt = null;
-		try {
-			conn = DBManager.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, id);
-			pstmt.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			DBManager.close(conn, pstmt);
-		}
-	}
 
 	// id 중복 체크
 	public int confirmId(String id) {

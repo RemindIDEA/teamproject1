@@ -13,6 +13,7 @@ public class LoginServiceImpl implements LoginService {
 	}	
 	//repo instance 생성
 	LoginRepository loginRepo = LoginRepositoryImpl.getInstance();
+	PostService postService = PostServiceImpl.getInstance();
 	
 	//회원가입하기
 	@Override
@@ -20,21 +21,29 @@ public class LoginServiceImpl implements LoginService {
 		//회원가입 정보 받아서 등록하기
 		return loginRepo.createMember(mDTO);
 	}
-	//회원정보 가져오기
+	//id로 회원정보 가져오기
+	@Override
+	public MemberDTO getMember(String id) {
+		return loginRepo.getMember(id);
+	}
+	//회원정보 변경
+	@Override
+	public void updateMember(MemberDTO mDTO) {
+		loginRepo.updateMember(mDTO);
+	}
+	//회원정보 삭제
+	@Override
+	public void deleteMember(String id) {
+		//회원정보 삭제전 회원이 작성한 글 먼저 지워주기(FK 이슈)
+		postService.deletePost(id);
+		//회원 정보 삭제
+		loginRepo.deleteMember(id);
+	}
+	//로그인시 회원 맞는지 여부 확인
 	@Override
 	public int selectMember(String id, String pw) {
 		//받은 아이디 비번으로 회원정보 맞는지 확인하기.
 		return loginRepo.selectMember(id, pw);
-	}
-	//회원정보 변경
-	@Override
-	public int updateMember(MemberDTO mDTO) {
-		return 0;
-	}
-	//회원정보 삭제
-	@Override
-	public void deleteMember(MemberDTO mDTO) {
-		
 	}
 	//아이디 중복 확인
 	@Override
@@ -63,5 +72,8 @@ public class LoginServiceImpl implements LoginService {
 	public String searchPw(String id, String nickname) {
 		return null;
 	}
+
+
+
 
 }
