@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.thousand.enums.SearchCheckResult;
 import com.thousand.service.LoginService;
 import com.thousand.service.LoginServiceImpl;
 
@@ -26,8 +27,10 @@ public class NicknameCheckServlet extends HttpServlet {
 		String nickname = request.getParameter("nickname");
 		LoginService loginService = LoginServiceImpl.getInstance();
 		request.setAttribute("nickname", nickname);
-		request.setAttribute("result", loginService.confirmNickname(nickname));
-
+		if(loginService.confirmId(nickname) == SearchCheckResult.SUCCESS) {
+			request.setAttribute("result", 1);
+		}else
+			request.setAttribute("result", -1);
 		RequestDispatcher dispatcher=request.getRequestDispatcher("mypage/checkNickname.jsp");
 		dispatcher.forward(request, response);
    }
