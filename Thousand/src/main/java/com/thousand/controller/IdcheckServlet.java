@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.thousand.enums.SearchCheckResult;
 import com.thousand.service.LoginService;
 import com.thousand.service.LoginServiceImpl;
 
@@ -33,9 +34,12 @@ public class IdcheckServlet extends HttpServlet {
 			String id = request.getParameter("id");
 			LoginService loginService = LoginServiceImpl.getInstance();
 			//id와 중복여부 결과값 전달.
+			if(loginService.confirmId(id) == SearchCheckResult.SUCCESS) {
+				request.setAttribute("result", 1);
+			}else {
+				request.setAttribute("result", -1);
+			}
 			request.setAttribute("id", id);
-			request.setAttribute("result", loginService.confirmId(id));
-			
 			RequestDispatcher dispatcher=request.getRequestDispatcher("mypage/checkId.jsp");
 			dispatcher.forward(request, response);
 		}

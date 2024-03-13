@@ -39,4 +39,8 @@ public class QueryCollect {
 	public static final String GET_MEMBER = "select * from member where id=?";
 	public static final String UPDATE_MEMBER = "update member set pw=?,email=?,nickname=? where id=?";
 	public static final String DELETE_MEMBER = "delete member where id = ?";
+	public static final String CHECK_PW = "select * from member where id=? and pw=?";
+	public static final String SEARCH_ID = "select id from member where nickname=?";
+	public static final String SEARCH_PW = "select pw from member where id=? and nickname=?";
+	
 }
